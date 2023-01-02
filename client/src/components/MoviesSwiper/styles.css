@@ -1,0 +1,12 @@
+.movies-swiper{
+    padding-top: 20px;
+}
+.movie-slide {
+    min-height: 150px;
+    background-color: aquamarine;
+    margin: 0 50px 0 50px;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

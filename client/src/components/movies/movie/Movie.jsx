@@ -13,6 +13,8 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
 
+import { deleteMovie, likeMovie } from '../../../redux/actions/movies';
+
 import './movie.css';
 
 const Movie = ({ movie, setCurrentId }) => {
@@ -60,14 +62,16 @@ const Movie = ({ movie, setCurrentId }) => {
         <Button
           size='small'
           color='primary'
-          // onClick={() => dispatch(likeMovie(movie._id))}
+          onClick={() => dispatch(likeMovie(movie._id))}
         >
-          <ThumbUpAltIcon fontSize='small' /> Like {movie.likeCount}{' '}
+          <ThumbUpAltIcon fontSize='small' />
+          &nbsp;Like&nbsp;
+          {movie.likeCount}
         </Button>
         <Button
           size='small'
           color='primary'
-          // onClick={() => dispatch(deletePost(movie._id))}
+          onClick={() => dispatch(deleteMovie(movie._id))}
         >
           <DeleteIcon fontSize='small' /> Delete
         </Button>

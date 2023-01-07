@@ -36,3 +36,30 @@ export const updateMovie = async (req, res) => {
   );
   res.json(updatedMovie);
 };
+
+export const deleteMovie = async (req, res) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send(`No movie with id: ${id}`);
+
+  await MovieData.findByIdAndRemove(id);
+  res.json({ message: 'Movie deleted Successfully' });
+};
+
+export const likeMovie = async (req, res) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send(`No movie with id: ${id}`);
+
+  const movie = await MovieData.findById(id);
+  const updatedMovie = await MovieData.findByIdAndUpdate(
+    id,
+    {
+      likeCount: movie.likeCount + 1,
+    },
+    {
+      new: true,
+    }
+  );
+  res.json(updatedMovie);
+};
